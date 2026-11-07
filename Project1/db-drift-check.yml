@@ -1,0 +1,47 @@
+name: Database Drift and Build Check
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  validate-db-project:
+    runs-on: windows-latest # Richiesto se usi SqlPackage nativo Windows o strumenti DacFX
+
+    steps:
+    - name: Checkout del codice
+      uses: actions/checkout@v4
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Compilazione del progetto SQL Server SDK (.dacpac)
+      run: |
+        cd Project1
+        dotnet build --configuration Release
+
+    - name: Installazione / Verifica SqlPackage (se necessario)
+      shell: pwsh
+      run: |
+        # SqlPackage è solitamente preinstallato sugli agent Windows di GitHub
+        sqlpackage /?
+
+    - name: Verifica Drift / Generazione Piano di Deploy
+      shell: pwsh
+      run: |
+        cd Project1
+        # Esegue il confronto tra il dacpac compilato e il database di staging/produzione
+        # Nota: In un ambiente reale, la stringa di connessione verrebbe passata tramite GitHub Secrets
+        sqlpackage /Action:Script `
+          /SourceFile:"bin\Release\net8.0\Project1.dacpac" `
+          /TargetConnectionString:"${{ secrets.DB_CONNECTION_STRING }}" `
+          /OutputPath:"DriftReport.sql"
+
+    - name: Upload del report come artefatto
+      uses: actions/upload-artifact@v4
+      with:
+        name: db-deployment-report
+        path: Project1/DeploymentReport.sqls
