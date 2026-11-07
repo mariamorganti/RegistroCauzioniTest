@@ -1,8 +1,9 @@
-<Project Sdk="MSBuild.Sdk.SqlProj/3.3.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/4.4.0">
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <SqlServerVersion>Sql170</SqlServerVersion>
         <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
+        <NoWarn>$(NoWarn);SQLPROJ0002</NoWarn>
         <!-- For additional properties that can be set here, please refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#model-properties -->
     </PropertyGroup>
 
@@ -16,9 +17,11 @@
         <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="3.0.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        </PackageReference> 
     </ItemGroup>
-
+  <ItemGroup>
+    <Build Include="Tables\**\*.sql" />
+  </ItemGroup>
     <PropertyGroup>
         <!-- Refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#publishing-support for supported publishing options -->
     </PropertyGroup>

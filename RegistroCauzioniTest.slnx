@@ -1,1 +1,5 @@
-<Solution />
+<Solution>
+  <Folder Name="/Profiles/">
+    <File Path="RegistroCauzioni.publish.xml" />
+  </Folder>
+</Solution>
