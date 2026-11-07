@@ -1,3 +1,7 @@
 <Solution>
+  <Folder Name="/.github/" />
+  <Folder Name="/.github/workflows/">
+    <File Path="db-drift-check.yml" />
+  </Folder>
   <Project Path="Project1.csproj" />
 </Solution>
