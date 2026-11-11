@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.SqlProj/4.4.0">
+﻿<Project Sdk="MSBuild.Sdk.SqlProj/4.4.0">
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <SqlServerVersion>Sql170</SqlServerVersion>

@@ -3,5 +3,5 @@
   <Folder Name="/.github/workflows/">
     <File Path="db-drift-check.yml" />
   </Folder>
-  <Project Path="Project1.csproj" />
+  <Project Path="RegistroCauzione.csproj" />
 </Solution>
