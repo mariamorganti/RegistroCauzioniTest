@@ -1,5 +1,5 @@
 ﻿/*
-Script di distribuzione per RegistroCauzioniTest
+Script di distribuzione per DBRegistroCauzioni
 
 Questo codice è stato generato da uno strumento.
 Le modifiche apportate a questo file possono causare un comportamento non corretto e andranno perse se
@@ -13,8 +13,8 @@ SET NUMERIC_ROUNDABORT OFF;
 
 
 GO
-:setvar DatabaseName "RegistroCauzioniTest"
-:setvar DefaultFilePrefix "RegistroCauzioniTest"
+:setvar DatabaseName "DBRegistroCauzioni"
+:setvar DefaultFilePrefix "DBRegistroCauzioni"
 :setvar DefaultDataPath "C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER2025\MSSQL\DATA\"
 :setvar DefaultLogPath "C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER2025\MSSQL\DATA\"
 
